@@ -1,0 +1,179 @@
+/* #region -----| Global |------------------------------------------------  */
+:root {
+  /* colors  */
+  --color-0-xtra-light: rgb(231, 231, 231);
+  --color-1-light: rgb(192, 191, 191);
+  --color-2-medium: rgb(143, 142, 142);
+  --color-3-dark: rgb(87, 86, 86);
+  --color-4-xtra-dark: rgb(41, 41, 41);
+
+  /* font  */
+  --font-headline: "Arial", sans-serif;;
+  --font-body: "Times New Roman", serif;
+  --font-size-xsm: 1.2rem;
+  --font-size-sm: 1.6rem;
+  --font-size-md: 2.4rem;
+  --font-size-lg: 3rem;
+  --font-size-xl: 4rem;
+
+  --gap: 1.5rem;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  /* Guide  */
+  /* border: 1px solid red; */
+}
+
+html {
+  /* font-size: 10px; Makes 1rem = 10px , must change font size to 1.6rem */
+  font-size: 62.5%;
+
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  color: black;
+  background-color: lightcyan;
+  letter-spacing: 1px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headline);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+  padding-left: 2rem;
+}
+
+
+
+img {
+  /* so images dont overflow their containers  */
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button {
+  /* font is shorthand for size, style, etc  */
+  font: inherit;
+  color: inherit;
+  /* border: none; */
+  /* background-color: transparent; */
+  /* outline: none; */
+}
+
+/* Remix Icon Size  */
+i {
+  font-size: var(--font-size-md);
+}
+/* #endregion  */
+
+/* #region -----| Reusable Styles |---------------------------------------*/
+
+.place-items-center {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen-sm-hidden {
+  display: none;
+}
+
+.d-grid {
+  display: grid;
+}
+
+
+/* #endregion  */
+
+/* #region -----| Styles |-------------------------------------  */
+
+.splitscreen-panel {
+  /* grid-template-columns: 4fr 1fr; */
+  background-color: var(--color-0-xtra-light);
+}
+
+.splitscreen-panel > div {
+  border: 1px solid red
+}
+
+.modal-bg {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+
+}
+
+.modal-body {
+ background-color: white;
+ margin: 10% auto;
+ padding: 20px;
+ width: 50%;
+}
+
+.container {
+  background-color: var(--color-2-medium);
+  padding: 1rem;
+  margin: .5rem;
+  border: 1px solid var(--color-0-xtra-light);
+}
+
+.section {
+  background-color: var(--color-1-light);
+  border: 2px solid var(--color-3-dark);
+  padding: 1rem;
+  margin: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+/* #endregion  */
+
+/* #region -----| Media Queries -from MOBILE |-------------------------------------  */
+
+/* Mobile style to min 365px  */
+@media screen and (min-width: 576px) {
+
+}
+
+@media screen and (min-width: 768px) {
+
+}
+
+@media screen and (min-width: 992px) {
+
+}
+
+/* xlg-screen style to max 1920 */
+@media screen and (min-width: 1200px) {
+
+}
+
+/* #endregion  */
