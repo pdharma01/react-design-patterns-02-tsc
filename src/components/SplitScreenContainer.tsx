@@ -1,12 +1,10 @@
-const SplitScreenContainer = ({children}: { children: React.ReactNode[]}) => {
+import { childrenType } from "./types";
+
+const SplitScreenContainer = ({children}: childrenType) => {
     let columns: string = ""
-    children.forEach((child) => {
+    children?.forEach((child :childrenType) => {
         columns += `${child.props.fr}fr `;
     })
-
-
-
-
 
     return (
         <div

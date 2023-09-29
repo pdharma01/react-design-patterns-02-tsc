@@ -1,10 +1,22 @@
-const RegularList = ({
-    items
-    // resourceName
-}:{items :object[]}) => {
+interface ProductType {
+    id :number,
+    name :string,
+    price :number,
+    description :string,
+    rating :number
+}
 
-    // console.log(items);
-    items.forEach((item)=> console.log(item.name))
+interface ListType {
+    items :ProductType[],
+    resourceName :string,
+    itemComponent :React.FC
+}
+
+const RegularList = ({
+    items,
+    resourceName,
+    itemComponent
+} :ListType) => {
     return (
         <div>
             <h3>RegularList</h3>
