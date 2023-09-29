@@ -3,6 +3,7 @@ import './App.css'
 
 import SplitScreenContainer from './components/SplitScreenContainer'
 import SplitScreenPanel from './components/SplitScreenPanel'
+import RegularList from './components/RegularList'
 
 
 
@@ -49,17 +50,17 @@ function App() {
 
   return (
     <>
-    <SplitScreenContainer>
+      <SplitScreenContainer>
 
-      <SplitScreenPanel fr ={3} >
-        <h1>Panel1</h1>
-      </SplitScreenPanel>
+        <SplitScreenPanel fr={1} >
+          <RegularList  items={tempData}/>
+        </SplitScreenPanel>
 
-      <SplitScreenPanel fr ={5} >
-        <h1>Panel2</h1>
-      </SplitScreenPanel>
-      
-    </SplitScreenContainer>
+        <SplitScreenPanel fr={5} >
+
+        </SplitScreenPanel>
+
+      </SplitScreenContainer>
     </>
   )
 }
