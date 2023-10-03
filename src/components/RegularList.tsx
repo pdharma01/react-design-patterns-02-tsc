@@ -12,16 +12,23 @@ interface ListType {
     itemComponent :React.FC
 }
 
+
+
 const RegularList = ({
     items,
     resourceName,
-    itemComponent
+    itemComponent : ItemComponent
 } :ListType) => {
+
     return (
-        <div>
-            <h3>RegularList</h3>
-            {items.map((item)=> (<p>{item.name}</p>))}
-        </div>
+        <ul>
+        {items.map((item, index)=> (
+            <div key={index + resourceName}>
+            <h3>{index + 1}</h3>
+            <ItemComponent  {...{[resourceName] : item}}/>
+            </div>
+        ))}
+        </ul>
     )
 }
 

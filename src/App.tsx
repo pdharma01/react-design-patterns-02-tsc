@@ -3,11 +3,14 @@ import './App.css'
 
 import SplitScreenContainer from './components/SplitScreenContainer'
 import SplitScreenPanel from './components/SplitScreenPanel'
+// Lists 
 import RegularList from './components/RegularList'
+import LargeListItem from './components/LargeListItem'
 
 
 
-let tempData = [
+
+const tempData = [
   {
     "id": 1,
     "name": "Smartphone",
@@ -53,7 +56,11 @@ function App() {
       <SplitScreenContainer>
 
         <SplitScreenPanel fr={1} >
-          <RegularList  items={tempData}/>
+          <RegularList
+            items={tempData.slice(0, 2)}
+            resourceName="products"
+            itemComponent={LargeListItem}
+          />
         </SplitScreenPanel>
 
         <SplitScreenPanel fr={5} >
