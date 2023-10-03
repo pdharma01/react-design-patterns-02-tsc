@@ -49,7 +49,7 @@ const tempData = [
 ]
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [products, setProducts] = useState(tempData.slice(0, 2))
 
   return (
     <>
@@ -57,8 +57,8 @@ function App() {
 
         <SplitScreenPanel fr={1} >
           <RegularList
-            items={tempData.slice(0, 2)}
-            resourceName="products"
+            items={products}
+            resourceName="product"
             itemComponent={LargeListItem}
           />
         </SplitScreenPanel>
