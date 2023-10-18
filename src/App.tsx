@@ -50,7 +50,7 @@ const tempData = [
 ]
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [products, setProducts] = useState(tempData.slice(0, 2))
 
   return (
     <>
