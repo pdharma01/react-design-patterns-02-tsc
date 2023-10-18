@@ -1,33 +1,32 @@
-interface ProductType {
-    id :number,
-    name :string,
-    price :number,
-    description :string,
-    rating :number
-}
 
-interface ListType {
-    items :ProductType[],
-    resourceName :string,
-    itemComponent :React.FC
-}
+// type RegularListProps<T> = {
+//     items: T[];
+//     resourceName: string;
+//     itemComponent: React.ComponentType<{ [resourceName: string]: T }>;
+// };
 
+type RegularListProps<T> = {
+    items: T[];
+    resourceName: string;
+    itemComponent: React.ComponentType<{ resourceName: string, item: any }>;
+};
 
 
-const RegularList = ({
-    items,
-    resourceName,
-    itemComponent : ItemComponent
-} :ListType) => {
+function RegularList<T>({ 
+    items, 
+    resourceName, 
+    itemComponent: ItemComponent 
+}: RegularListProps<T>) {
 
     return (
         <ul>
-        {items.map((item, index)=> (
-            <div key={index + resourceName}>
-            <h3>{index + 1}</h3>
-            <ItemComponent  {...{[resourceName] : item}}/>
-            </div>
-        ))}
+            {items.map((item, index) => (
+                <div key={index + resourceName}>
+                    <h3>{index + 1}</h3>
+                    {/* <ItemComponent  {...{ [resourceName]: item }} /> */}
+                    <ItemComponent  resourceName = {resourceName} item = {item} />
+                </div>
+            ))}
         </ul>
     )
 }

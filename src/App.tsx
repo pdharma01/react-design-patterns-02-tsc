@@ -5,7 +5,8 @@ import SplitScreenContainer from './components/SplitScreenContainer'
 import SplitScreenPanel from './components/SplitScreenPanel'
 // Lists 
 import RegularList from './components/RegularList'
-import LargeListItem from './components/LargeListItem'
+import SmallListItem from './components/SmallListItem'
+import { ProductType } from './components/types'
 
 
 
@@ -56,10 +57,10 @@ function App() {
       <SplitScreenContainer>
 
         <SplitScreenPanel fr={1} >
-          <RegularList
+          <RegularList<ProductType>
             items={tempData.slice(0, 2)}
-            resourceName="products"
-            itemComponent={LargeListItem}
+            resourceName="rrr"
+            itemComponent={SmallListItem}
           />
         </SplitScreenPanel>
 
