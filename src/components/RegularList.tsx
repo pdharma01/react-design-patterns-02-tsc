@@ -8,14 +8,17 @@
 type RegularListProps<T> = {
     items: T[];
     resourceName: string;
-    itemComponent: React.ComponentType<{ resourceName: string, item: any }>;
+    itemComponent: React.ComponentType<{
+        item: T,
+        resourceName: string
+    }>;
 };
 
 
-function RegularList<T>({ 
-    items, 
-    resourceName, 
-    itemComponent: ItemComponent 
+function RegularList<T>({
+    items,
+    resourceName,
+    itemComponent: ItemComponent
 }: RegularListProps<T>) {
 
     return (
@@ -23,8 +26,9 @@ function RegularList<T>({
             {items.map((item, index) => (
                 <div key={index + resourceName}>
                     <h3>{index + 1}</h3>
-                    {/* <ItemComponent  {...{ [resourceName]: item }} /> */}
-                    <ItemComponent  resourceName = {resourceName} item = {item} />
+                    <ItemComponent
+                        item={item}
+                        resourceName={resourceName} />
                 </div>
             ))}
         </ul>
