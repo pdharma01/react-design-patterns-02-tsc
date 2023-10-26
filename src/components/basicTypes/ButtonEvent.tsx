@@ -3,14 +3,15 @@ type ButtonEventProps = {
     event: React.MouseEvent<HTMLButtonElement>,
     id?: string
   ) => void,
+  buttonText: string
 }
 
-const ButtonEvent = ({ handleClick }: ButtonEventProps) => {
+const ButtonEvent = ({ handleClick, buttonText }: ButtonEventProps) => {
   return (
     <>
       <button
-      type = "submit"
-        onClick={(event) => handleClick(event, "ButtonEventClicked:")}>Submit</button>
+        type="submit"
+        onClick={(event) => handleClick(event, "ButtonEventClicked:")}>{buttonText}</button>
     </>
   )
 }

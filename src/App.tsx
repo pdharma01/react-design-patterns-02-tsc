@@ -6,6 +6,9 @@ import BasicProps from './components/basicTypes/BasicProps'
 import ComponentWithChildren from './components/ComponentWithChildren'
 import ButtonEvent from './components/basicTypes/ButtonEvent'
 
+// useHooks 
+import UseHooks from './components/useHooks/UseHooks'
+
 // Layout Components 
 import SimpleForm from './components/SimpleForm'
 import SplitScreenContainer from './components/SplitScreenContainer'
@@ -118,13 +121,18 @@ function App() {
             optionWithDefault="Option inputed in App" />
 
           <ButtonEvent
-            handleClick={(event, id) => console.log(id, event)} />
+            handleClick={(event, id) => console.log(id, event)}
+            buttonText='Log Button ID and Event' />
 
             <SimpleForm></SimpleForm>
 
         </ComponentWithChildren>
 
 
+      </div>
+      <div className="section">
+        <h2>UseHooks</h2>
+        <UseHooks></UseHooks>
       </div>
 
 

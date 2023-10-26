@@ -7,13 +7,18 @@ const SimpleForm = () => {
     const [textInput, setTextInput] = useState<string>("");
     const [numberInput, setNumberInput] = useState<number>(0)
 
-
     const handleSubmit = (
         event: React.MouseEvent<HTMLButtonElement>,
-        id?: string) => {
+        id?: string
+        ) => {
+
         event.preventDefault();
+
+        // Log input 
         console.log(id, typeof textInput, textInput, typeof numberInput, numberInput);
         console.log(event);
+
+        // Reset Form 
         setTextInput("");
         setNumberInput(0)
 
@@ -29,6 +34,7 @@ const SimpleForm = () => {
         set(event.target.value)
     }
 
+    // Only pass value as generic string or number 
     function handleChangeValue<T>(
         value: T,
         set: React.Dispatch<React.SetStateAction<T>>
@@ -58,7 +64,8 @@ const SimpleForm = () => {
                 onChange={(e) => handleChangeValue<number>(e.target.valueAsNumber, setNumberInput)}
             />
             <ButtonEvent
-                handleClick={handleSubmit} />
+                handleClick={handleSubmit}
+                buttonText="Submit" />
 
         </form>
     )
