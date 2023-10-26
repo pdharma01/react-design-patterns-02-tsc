@@ -1,6 +1,13 @@
 import { useState } from 'react'
 import './App.css'
 
+// Basic Types 
+import BasicProps from './components/basicTypes/BasicProps'
+import ComponentWithChildren from './components/ComponentWithChildren'
+import ButtonEvent from './components/basicTypes/ButtonEvent'
+
+// Layout Components 
+import SimpleForm from './components/SimpleForm'
 import SplitScreenContainer from './components/SplitScreenContainer'
 import SplitScreenPanel from './components/SplitScreenPanel'
 // Lists 
@@ -101,36 +108,60 @@ function App() {
 
   return (
     <>
-      <SplitScreenContainer>
+      <div className='section'>
+        <h2>Basic Types</h2>
+        <ComponentWithChildren>
+          <h4>ComponentWithChildren</h4>
 
-        <SplitScreenPanel fr={1} >
+          <BasicProps
+            stringLiteral='Works!'
+            optionWithDefault="Option inputed in App" />
 
-          <div>
-            <h3>Small Product Regular List</h3>
-            <RegularList<ProductType>
-              items={products}
-              resourceName="products"
-              itemComponent={SmallProductListItem}
-            />
-          </div>
-          
-          <div>
-            <h3>Small User Numbered List</h3>
-            <NumberedList
-              items={users}
-              resourceName="users"
-              itemComponent={SmallUserListItem}
-            />
-          </div>
+          <ButtonEvent
+            handleClick={(event, id) => console.log(id, event)} />
+
+            <SimpleForm></SimpleForm>
+
+        </ComponentWithChildren>
 
 
-        </SplitScreenPanel>
+      </div>
 
-        <SplitScreenPanel fr={5} >
 
-        </SplitScreenPanel>
+      <div className="section">
+        <h2>SplitScreen</h2>
 
-      </SplitScreenContainer>
+        <SplitScreenContainer>
+
+          <SplitScreenPanel fr={1} >
+
+            <div>
+              <h3>Small Product Regular List</h3>
+              <RegularList<ProductType>
+                items={products}
+                resourceName="products"
+                itemComponent={SmallProductListItem}
+              />
+            </div>
+
+            <div>
+              <h3>Small User Numbered List</h3>
+              <NumberedList
+                items={users}
+                resourceName="users"
+                itemComponent={SmallUserListItem}
+              />
+            </div>
+
+
+          </SplitScreenPanel>
+
+          <SplitScreenPanel fr={5} >
+
+          </SplitScreenPanel>
+
+        </SplitScreenContainer>
+      </div>
     </>
   )
 }
