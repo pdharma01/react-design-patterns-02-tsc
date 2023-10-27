@@ -19,6 +19,7 @@ import SmallProductListItem from './components/SmallProductListItem'
 import SmallUserListItem from './components/SmallUserListItem'
 import withNumberedList from './components/withNumberedList'
 import { ProductType, UserType } from './components/types'
+import ScratchTests from './components/ScratchTests'
 
 
 
@@ -170,6 +171,7 @@ function App() {
 
         </SplitScreenContainer>
       </div>
+      <ScratchTests/>
     </>
   )
 }
