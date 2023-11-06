@@ -10,13 +10,16 @@ const SimpleForm = () => {
     const handleSubmit = (
         event: React.MouseEvent<HTMLButtonElement>,
         id?: string
-        ) => {
+    ) => {
 
         event.preventDefault();
 
         // Log input 
-        console.log(id, typeof textInput, textInput, typeof numberInput, numberInput);
-        console.log(event);
+        console.log(id, typeof textInput,
+            ":",
+            textInput, typeof numberInput,
+            ":",
+            numberInput);
 
         // Reset Form 
         setTextInput("");
@@ -27,12 +30,12 @@ const SimpleForm = () => {
 
 
     // Change Event is always string 
-    function handleChangeEvent(
-        event: React.ChangeEvent<HTMLInputElement>, // THis event is always STRING!
-        set: React.Dispatch<React.SetStateAction<string>>
-    ) {
-        set(event.target.value)
-    }
+    // function handleChangeEventString(
+    //     event: React.ChangeEvent<HTMLInputElement>, // THis event is always STRING!
+    //     set: React.Dispatch<React.SetStateAction<string>>
+    // ) {
+    //     set(event.target.value)
+    // }
 
     // Only pass value as generic string or number 
     function handleChangeValue<T>(
@@ -64,8 +67,9 @@ const SimpleForm = () => {
                 onChange={(e) => handleChangeValue<number>(e.target.valueAsNumber, setNumberInput)}
             />
             <ButtonEvent
-                handleClick={handleSubmit}
-                buttonText="Submit" />
+                handleClick={handleSubmit}>
+                <p>Submit Form (text and num input)</p>
+            </ButtonEvent>
 
         </form>
     )

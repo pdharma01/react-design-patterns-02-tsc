@@ -145,6 +145,12 @@ i {
   margin: 1rem;
 }
 
+.component-container {
+  background-color: var(--color-0-xtra-light);
+  border: 2px solid var(--color-3-dark);
+  padding: .5rem;
+}
+
 
 
 

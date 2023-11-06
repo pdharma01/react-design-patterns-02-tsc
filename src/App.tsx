@@ -6,6 +6,7 @@ import BasicProps from './components/basicTypes/BasicProps'
 import ComponentWithChildren from './components/ComponentWithChildren'
 import ButtonEvent from './components/basicTypes/ButtonEvent'
 
+
 // useHooks 
 import UseHooks from './components/useHooks/UseHooks'
 
@@ -20,9 +21,9 @@ import SmallUserListItem from './components/SmallUserListItem'
 import withNumberedList from './components/withNumberedList'
 import { ProductType, UserType } from './components/types'
 import ScratchTests from './components/ScratchTests'
-
-
-
+import ChangeEvent from './components/basicTypes/ChangeEvent'
+import CssStyleProps from './components/basicTypes/CssStyleProps'
+import UseStateProps from './components/useHooks/UseStateProps'
 
 
 const tempData = {
@@ -104,6 +105,10 @@ const tempData = {
 
 }
 
+// as const 
+// style props 
+// useAuth  
+
 const NumberedList = withNumberedList(RegularList<UserType>)
 
 function App() {
@@ -122,10 +127,27 @@ function App() {
             optionWithDefault="Option inputed in App" />
 
           <ButtonEvent
-            handleClick={(event, id) => console.log(id, event)}
-            buttonText='Log Button ID and Event' />
+            handleClick={(event, id) => console.log(id, event)}>
+            <p>Log Button ID and Event</p>
+          </ButtonEvent>
 
-            <SimpleForm></SimpleForm>
+          <ChangeEvent
+            value="Change Event Component"
+            handleChange={(event) => console.log(event.target)}
+          />
+
+
+          <SimpleForm></SimpleForm>
+
+          <CssStyleProps
+            styles={
+              {
+                border: "2px dashed teal",
+                padding: "1rem",
+                backgroundColor: "salmon"
+              }
+            }
+          />
 
         </ComponentWithChildren>
 
@@ -134,6 +156,9 @@ function App() {
       <div className="section">
         <h2>UseHooks</h2>
         <UseHooks></UseHooks>
+        <UseStateProps
+          user={users[0]}
+        />
       </div>
 
 
@@ -171,7 +196,7 @@ function App() {
 
         </SplitScreenContainer>
       </div>
-      <ScratchTests/>
+      <ScratchTests />
     </>
   )
 }

@@ -4,7 +4,7 @@ type BasicPropsProps = {
 }
 
 
-const  BasicProps = ({ stringLiteral, optionWithDefault = "default" }:  BasicPropsProps) :React.ReactNode=> {
+const  BasicProps = ({ stringLiteral, optionWithDefault = "default inputed in BasicProps" }:  BasicPropsProps) :React.ReactNode=> {
     
     return (
         <>

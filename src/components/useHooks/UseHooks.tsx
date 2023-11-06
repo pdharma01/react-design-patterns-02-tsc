@@ -6,16 +6,20 @@ const fromMessage = "Hi from UseHooks. "
 
 function UseHooks() {
 
+    // useRef 
+    // useMemo
+    // useCallback 
+    //useEffect- create full componentent life cycle
+    
     renderCount += 1
 
     const [count, setCount] = useState(0)
-    const [count_2, setCount_2] = useState(1000)
     const [useEffectCount, setUseEffectCount] = useState(0)
 
 
     useEffect(() => {
         console.log(fromMessage, "first useEffect run once");
-    }, []) //GOTCHA!- Dont forget dependancy array. Dependency prone to infinite loops
+    }, []) //GOTCHA!- Dependancy array
 
     useEffect(() => {
         console.log(fromMessage, "useEffectCount change, but no re-render")
@@ -23,16 +27,11 @@ function UseHooks() {
     }, [useEffectCount])
 
 
-    // type incrementType = {
-    //     value: number,
-    //     amount: number,
-    //     set: React.Dispatch<React.SetStateAction<number>>
-    // }
     const incrementCount = (
         amount: number,
         set: React.Dispatch<React.SetStateAction<number>>): void => {
 
-        // GOTCHA! - useState batch runs once
+        // GOTCHA! - useState batch runs
         set((prevValue) => prevValue + 100);
         set((prevValue) => prevValue + amount);
     }
@@ -41,20 +40,15 @@ function UseHooks() {
         <div>
             <p>Component renders : {renderCount}</p>
 
+            <ButtonEvent
+                handleClick={() => incrementCount(1, setCount)}>
+                <p>useState count += {count}</p>
+            </ButtonEvent>
 
             <ButtonEvent
-                handleClick={() => incrementCount(1, setCount)}
-                buttonText={`useState count += ${count}`}
-            />
-
-            <ButtonEvent
-                handleClick={() => incrementCount(5, setUseEffectCount)}
-                buttonText={`useEffect count += ${useEffectCount}`}
-            />
-
-
-
-
+                handleClick={() => incrementCount(5, setUseEffectCount)}>
+                <p>useEffect count += {useEffectCount}</p>
+            </ButtonEvent>
 
         </div>
     )

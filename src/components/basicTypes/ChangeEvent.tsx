@@ -1,12 +1,17 @@
 type ChangeEventProps = {
-    value: string,
-    handleChange: (()=> void)
+  value: string,
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-const ChangeEvent = () => {
-  return (
-    <div>ChangeEvent</div>
+const ChangeEvent = ({ value, handleChange }: ChangeEventProps) => {
+ return (
+    <input
+      type="text"
+      value={value}
+      onChange={handleChange}
+
+    />
   )
 }
 
-export default ChangeEvent
+export default ChangeEvent 
