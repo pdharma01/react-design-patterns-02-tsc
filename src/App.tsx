@@ -24,6 +24,9 @@ import ScratchTests from './components/ScratchTests'
 import ChangeEvent from './components/basicTypes/ChangeEvent'
 import CssStyleProps from './components/basicTypes/CssStyleProps'
 import UseStateProps from './components/useHooks/UseStateProps'
+import HigherOrderComponent from './components/basicTypes/HigherOrderComponent'
+import LargeListItem from './components/LargeListItem'
+import Generics from './components/basicTypes/Generics'
 
 
 const tempData = {
@@ -150,6 +153,17 @@ function App() {
           />
 
         </ComponentWithChildren>
+
+        <HigherOrderComponent
+          component={LargeListItem}
+          product={products[0]}
+        />
+
+        <Generics<UserType>
+          items={users.slice(0, 2)}
+          // items={products.slice(0, 2)}
+          handleClick={(item) => console.log(item)}
+        />
 
 
       </div>

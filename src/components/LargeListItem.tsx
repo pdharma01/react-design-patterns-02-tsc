@@ -1,6 +1,9 @@
 import { ProductType } from "./types"
 
-const LargeListItem = ({ product }): React.ReactNode => {
+export type LargeListItemProps = {
+  product: ProductType | null
+}
+const LargeListItem = ({ product }: LargeListItemProps): React.ReactNode => {
 
   const { id, name, price, description, rating } = product || {}
 

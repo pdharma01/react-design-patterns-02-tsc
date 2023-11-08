@@ -1,0 +1,6 @@
+typescript is, in
+
+
+component={component}
+rest={rest}
+Component {..rest}

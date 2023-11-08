@@ -8,9 +8,14 @@ type UseStatePropsProps = {
 
 const UseStateProps = ({ user }: UseStatePropsProps) => {
 
+    //type inferred by initial state
     const [isLoggedIn, setIsLoggedIn] = useState(false) //type inferred by initial state
+
+    //untion of present and future State type
     const [authUser, setAuthUser] = useState<UserType | null>(null)
 
+    //Type assertion with "as". Fake out initial empty object as UserType
+    const [typeAssertion, setTypeAssertion] = useState({} as UserType)
 
     const handleLogin = () => {
         setIsLoggedIn(true)
