@@ -27,6 +27,8 @@ import UseStateProps from './components/useHooks/UseStateProps'
 import HigherOrderComponent from './components/basicTypes/HigherOrderComponent'
 import LargeListItem from './components/LargeListItem'
 import Generics from './components/basicTypes/Generics'
+import TemplateLiteralsAndExclude from './components/basicTypes/TemplateLiteralsAndExclude'
+import WrappingHTMLElement from './components/basicTypes/WrappingHTMLElement'
 
 
 const tempData = {
@@ -115,8 +117,8 @@ const tempData = {
 const NumberedList = withNumberedList(RegularList<UserType>)
 
 function App() {
-  const [products, setProducts] = useState(tempData["products"].slice(0, 2));
-  const [users, setUsers] = useState(tempData["users"].slice(0, 2))
+  const [products, setProducts] = useState(tempData["products"].slice(0, 3));
+  const [users, setUsers] = useState(tempData["users"].slice(0, 3))
 
   return (
     <>
@@ -160,10 +162,20 @@ function App() {
         />
 
         <Generics<UserType>
-          items={users.slice(0, 2)}
-          // items={products.slice(0, 2)}
+          items={users} //pass in users
+          // items={products} //pass in products
           handleClick={(item) => console.log(item)}
         />
+
+        <TemplateLiteralsAndExclude
+          position="center-bottom"
+        />
+
+        <WrappingHTMLElement
+          variant="secondary"
+          onClick={()=> console.log("ReactComponent Button Clicked")}>
+          Component Props Button
+        </WrappingHTMLElement>
 
 
       </div>
