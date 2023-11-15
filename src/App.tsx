@@ -29,6 +29,9 @@ import LargeListItem from './components/LargeListItem'
 import Generics from './components/basicTypes/Generics'
 import TemplateLiteralsAndExclude from './components/basicTypes/TemplateLiteralsAndExclude'
 import WrappingHTMLElement from './components/basicTypes/WrappingHTMLElement'
+import RestrictingProps from './components/basicTypes/RestrictingProps'
+import ExtractingProps from './components/basicTypes/ExtractingProps'
+import PolymorphicComponents from './components/basicTypes/PolymorphicComponents'
 
 
 const tempData = {
@@ -173,9 +176,32 @@ function App() {
 
         <WrappingHTMLElement
           variant="secondary"
-          onClick={()=> console.log("ReactComponent Button Clicked")}>
+          onClick={() => console.log("ReactComponent Button Clicked")}>
           Component Props Button
         </WrappingHTMLElement>
+
+        <RestrictingProps
+          value={10} isNeg
+        />
+
+        <ExtractingProps
+          stringLiteral='Works!'
+          optionWithDefault="Option inputed in App" />
+
+        <PolymorphicComponents
+          as="h1"
+          size="lg"
+          variant="primary">
+          Heading
+        </PolymorphicComponents>
+
+        <PolymorphicComponents
+          as="label"
+          htmlFor='someId'
+          size="lg"
+          variant="primary">
+          Label
+        </PolymorphicComponents>
 
 
       </div>
