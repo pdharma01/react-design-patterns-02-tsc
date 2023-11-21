@@ -1,31 +1,16 @@
 import { useState } from 'react'
 import './App.css'
 
+// Data Types 
+import { ProductType, UserType } from './components/types'
+
 // Basic Types 
 import BasicProps from './components/basicTypes/BasicProps'
-import ComponentWithChildren from './components/ComponentWithChildren'
+import ComponentWithChildren from './components/basicTypes/ComponentWithChildren'
 import ButtonEvent from './components/basicTypes/ButtonEvent'
-
-
-// useHooks 
-import UseHooks from './components/useHooks/UseHooks'
-
-// Layout Components 
-import SimpleForm from './components/SimpleForm'
-import SplitScreenContainer from './components/SplitScreenContainer'
-import SplitScreenPanel from './components/SplitScreenPanel'
-// Lists 
-import RegularList from './components/RegularList'
-import SmallProductListItem from './components/SmallProductListItem'
-import SmallUserListItem from './components/SmallUserListItem'
-import withNumberedList from './components/withNumberedList'
-import { ProductType, UserType } from './components/types'
-import ScratchTests from './components/ScratchTests'
 import ChangeEvent from './components/basicTypes/ChangeEvent'
 import CssStyleProps from './components/basicTypes/CssStyleProps'
-import UseStateProps from './components/useHooks/UseStateProps'
 import HigherOrderComponent from './components/basicTypes/HigherOrderComponent'
-import LargeListItem from './components/LargeListItem'
 import Generics from './components/basicTypes/Generics'
 import TemplateLiteralsAndExclude from './components/basicTypes/TemplateLiteralsAndExclude'
 import WrappingHTMLElement from './components/basicTypes/WrappingHTMLElement'
@@ -33,6 +18,22 @@ import RestrictingProps from './components/basicTypes/RestrictingProps'
 import ExtractingProps from './components/basicTypes/ExtractingProps'
 import PolymorphicComponents from './components/basicTypes/PolymorphicComponents'
 
+// useHooks 
+import UseHooks from './components/useHooks/UseHooks'
+import UseStateProps from './components/useHooks/UseStateProps'
+
+// Layout Components 
+import SimpleForm from './components/SimpleForm'
+import SplitScreenContainer from './components/SplitScreenContainer'
+import SplitScreenPanel from './components/SplitScreenPanel'
+
+// Lists 
+import RegularList from './components/RegularList'
+import SmallProductListItem from './components/SmallProductListItem'
+import SmallUserListItem from './components/SmallUserListItem'
+import withNumberedList from './components/withNumberedList'
+import ScratchTests from './components/ScratchTests'
+import LargeListItem from './components/LargeListItem'
 
 const tempData = {
   products: [
@@ -114,6 +115,7 @@ const tempData = {
 }
 
 // as const 
+// all react events (onClick, onChange)
 // style props 
 // useAuth  
 
@@ -159,9 +161,10 @@ function App() {
 
         </ComponentWithChildren>
 
-        <HigherOrderComponent
+        <HigherOrderComponent<UserType>
           component={LargeListItem}
-          product={products[0]}
+          // item={products[0]}
+          item={users[0]}
         />
 
         <Generics<UserType>

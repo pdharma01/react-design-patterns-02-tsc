@@ -1,13 +1,19 @@
 import { useState } from "react"
 import ButtonEvent from "./ButtonEvent"
 import { LargeListItemProps } from "../LargeListItem"
+import { ProductType, UserType } from "../types"
 
 
-type HigherOrderComponentProps = {
-    component: React.ComponentType<LargeListItemProps>
+type HigherOrderComponentProps<T> = {
+    component: React.ComponentType<LargeListItemProps<T>>,
+    item: T
 }
 
-const HigherOrderComponent = ({ component : Component, ...props }: HigherOrderComponentProps) => {
+
+
+// const HigherOrderComponent = ({ component : Component, ...props }: HigherOrderComponentProps<T>) => {
+
+  function HigherOrderComponent<T extends ProductType | UserType>({ component : Component, ...props }: HigherOrderComponentProps<T>) {
 
     const [showSubComponent, setShowSubComponent] = useState(false)
 

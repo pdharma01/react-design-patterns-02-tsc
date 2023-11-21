@@ -40,7 +40,7 @@ const SimpleForm = () => {
     // Only pass value as generic string or number 
     function handleChangeValue<T>(
         value: T,
-        set: React.Dispatch<React.SetStateAction<T>>
+        set: React.Dispatch<React.SetStateAction<T>> //Type for setState function
     ) {
         set(value)
     }

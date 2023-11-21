@@ -1,24 +1,44 @@
-import { ProductType } from "./types"
+import { ProductType, UserType } from "./types"
 
-export type LargeListItemProps = {
-  product: ProductType | null
+export type LargeListItemProps<T> = {
+  item: T
 }
-const LargeListItem = ({ product }: LargeListItemProps): React.ReactNode => {
 
-  const { id, name, price, description, rating } = product || {}
+// ------------  Type Guard ----------------- 
+// Takes object of either 2 types. checks "is" product type. checks product property "name" is in object, returns true is both yes , 
+function isProduct(itemObject: ProductType | UserType): itemObject is ProductType {
+  return "name" in itemObject
+}
 
 
-  return (
-    product ? (
-      
-      <div>
+const LargeListItem = <T extends ProductType | UserType>({ item }: LargeListItemProps<T>): React.ReactNode => {
+
+  
+
+  
+  if (isProduct(item)) {
+    const { id, name, price, description, rating } = item || {}
+    
+    return (<div>
         <h3>{name}</h3>
         <h4>price:${price}, ID:{id}, Stars: {rating} </h4>
         <p>{description} </p>
       </div>
 
-    ) : null
-  )
+    )
+
+  } else {
+
+    const {screen_name, level } = item || {}
+    return (<div>
+        <h3>{screen_name}</h3>
+        <h4>Level: {level} </h4>
+      </div>
+
+    )
+
+  }
+
 
 }
 
