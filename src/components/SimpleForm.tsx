@@ -47,6 +47,10 @@ const SimpleForm = () => {
 
 
     return (
+
+        <div className="section">
+            <h4>Simple Form</h4>
+            <p>With event change and submit</p>
         <form>
             <input
 
@@ -72,6 +76,7 @@ const SimpleForm = () => {
             </ButtonEvent>
 
         </form>
+        </div>
     )
 }
 

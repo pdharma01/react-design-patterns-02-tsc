@@ -1,11 +1,12 @@
 type ComponentWithChildrenProps = {
-    children?: React.ReactNode
+  children?: React.ReactNode
 }
-const ComponentWithChildren = ({children}: ComponentWithChildrenProps) :React.ReactNode => {
-    return (
-    <>
-    {children}
-    </>
+const ComponentWithChildren = ({ children }: ComponentWithChildrenProps): React.ReactNode => {
+  return (
+    <div className="section">
+      <h4>ComponentWithChildren</h4>
+      {children}
+    </div>
   )
 }
 

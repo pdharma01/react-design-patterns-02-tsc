@@ -13,7 +13,7 @@ type HigherOrderComponentProps<T> = {
 
 // const HigherOrderComponent = ({ component : Component, ...props }: HigherOrderComponentProps<T>) => {
 
-  function HigherOrderComponent<T extends ProductType | UserType>({ component : Component, ...props }: HigherOrderComponentProps<T>) {
+function HigherOrderComponent<T extends ProductType | UserType>({ component: Component, ...props }: HigherOrderComponentProps<T>) {
 
     const [showSubComponent, setShowSubComponent] = useState(false)
 
@@ -21,12 +21,17 @@ type HigherOrderComponentProps<T> = {
 
         <div className="component-container">
             <h3>HigherOrderComponent</h3>
+            <div className="section">
+                {showSubComponent ? (
+                    <>
+                        <h4>SubComponent :</h4>
+                        <Component {...props} />
+                    </>
+                ) : (
+                    <h5>Not showing Sub Component</h5>
+                )}
+            </div>
 
-            {showSubComponent ? (
-                <Component {...props} />
-            ) : (
-                <h5>Not showing Sub Component</h5>
-            )}
 
             <ButtonEvent handleClick={() => setShowSubComponent(!showSubComponent)}>Toggle Show Sub Component</ButtonEvent>
 

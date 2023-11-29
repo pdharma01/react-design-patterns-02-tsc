@@ -21,16 +21,19 @@ const Generics = <T extends ProductType | UserType>({ items, handleClick }: Gene
         ) :React.ReactNode => {
 
         if (isProduct(item)) {
-            return <p>{index + 1}. {item.name}</p>
+            return <h5>{index + 1}. {item.name}</h5>
         } else {
-            return <p>{index + 1}. {item.screen_name}</p>
+            return <h5>{index + 1}. {item.screen_name}</h5>
         }
     }
 
     return (
-        <div>
+        <div className="component-container">
             <h3>Generics</h3>
+            <p>render generic list with items.map and type guard: </p>
+
             {items.map((item, index) => {
+
 
                 return (
 

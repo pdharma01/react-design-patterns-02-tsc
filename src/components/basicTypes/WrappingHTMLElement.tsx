@@ -3,7 +3,7 @@ type ButtonProps = {
     children: string  //restrict children type to string, not div or other
 } & Omit<React.ComponentProps<"button">, "children"> 
 
-//access html components children and ...rest with  -- & React.ReactComponentProps<button> --(in this case html "button" type to add onClick)
+//access html components children and ...rest of props  with  -- & React.ReactComponentProps<button> --(in this case html "button" type to add onClick)
 
 // children is default to ReactNode. By adding custom type children:string , children will then become union of ReactNode and string. To restrict to only string, use--- & Omit<  > ---to omit default children, then add my own children:string
 

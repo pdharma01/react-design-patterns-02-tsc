@@ -8,7 +8,6 @@ type ButtonEventProps = {
 
 const ButtonEvent = ({ children, handleClick }: ButtonEventProps) => {
   return (
-    <>
       <button
         type="submit"
         onClick={(event) => handleClick(event, "ButtonEventClicked:")}>
@@ -16,7 +15,6 @@ const ButtonEvent = ({ children, handleClick }: ButtonEventProps) => {
         {children}
         
       </button>
-    </>
   )
 }
 

@@ -4,7 +4,11 @@ type CssStylePropsProps = {
 
 const CssStyleProps = ({styles} :CssStylePropsProps) => {
   return (
-    <div style={styles}>CssStyleProps</div>
+    <div className="section">
+      <h4>CSS style Props</h4>
+
+      <div style={styles}>CssStyleProps</div>
+    </div>
   )
 }
 

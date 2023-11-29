@@ -20,8 +20,8 @@ const LargeListItem = <T extends ProductType | UserType>({ item }: LargeListItem
     const { id, name, price, description, rating } = item || {}
     
     return (<div>
-        <h3>{name}</h3>
-        <h4>price:${price}, ID:{id}, Stars: {rating} </h4>
+        <h5>{name}</h5>
+        <h5>price:${price}, ID:{id}, Stars: {rating} </h5>
         <p>{description} </p>
       </div>
 
@@ -31,8 +31,8 @@ const LargeListItem = <T extends ProductType | UserType>({ item }: LargeListItem
 
     const {screen_name, level } = item || {}
     return (<div>
-        <h3>{screen_name}</h3>
-        <h4>Level: {level} </h4>
+        <h5>{screen_name}</h5>
+        <p>Level: {level} </p>
       </div>
 
     )

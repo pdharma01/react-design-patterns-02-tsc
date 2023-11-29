@@ -5,12 +5,16 @@ type ChangeEventProps = {
 
 const ChangeEvent = ({ value, handleChange }: ChangeEventProps) => {
  return (
+  <div className="section">
+    <h4>Change Event</h4>
     <input
       type="text"
       value={value}
       onChange={handleChange}
 
     />
+
+  </div>
   )
 }
 
