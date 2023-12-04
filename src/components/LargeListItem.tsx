@@ -2,6 +2,9 @@ import { ProductType, UserType } from "./types"
 
 export type LargeListItemProps<T> = {
   item: T
+  handleClick: (item
+    // event: React.MouseEvent<HTMLHeadingElement>,
+  ) => void,
 }
 
 // ------------  Type Guard ----------------- 
@@ -11,7 +14,7 @@ function isProduct(itemObject: ProductType | UserType): itemObject is ProductTyp
 }
 
 
-const LargeListItem = <T extends ProductType | UserType>({ item }: LargeListItemProps<T>): React.ReactNode => {
+const LargeListItem = <T extends ProductType | UserType>({ item, handleClick }: LargeListItemProps<T>): React.ReactNode => {
 
   
 
@@ -20,7 +23,7 @@ const LargeListItem = <T extends ProductType | UserType>({ item }: LargeListItem
     const { id, name, price, description, rating } = item || {}
     
     return (<div>
-        <h5>{name}</h5>
+        <h5 onClick={(item)=>handleClick(item)}>{name}</h5>
         <h5>price:${price}, ID:{id}, Stars: {rating} </h5>
         <p>{description} </p>
       </div>
@@ -31,7 +34,7 @@ const LargeListItem = <T extends ProductType | UserType>({ item }: LargeListItem
 
     const {screen_name, level } = item || {}
     return (<div>
-        <h5>{screen_name}</h5>
+        <h5 onClick={(event)=>console.log(event.target.textContent)}>{screen_name}</h5>
         <p>Level: {level} </p>
       </div>
 

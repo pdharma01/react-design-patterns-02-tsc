@@ -2,15 +2,18 @@ import { UserType, ProductType } from "../types"
 import { LargeListItemProps } from "../LargeListItem"
 
 type GenericsHOCListProps<T> = {
-    component: React.ComponentType<LargeListItemProps<T>>,
+    itemComponent: React.ComponentType<LargeListItemProps<T>>,
     items: T[]
+    handleClick: (item
+        // event: React.MouseEvent<HTMLHeadingElement>,
+      ) => void
 }
 
 
 //Create with children version
 
 
-function GenericsHOCList<T extends UserType | ProductType>({ component: Component, items }: GenericsHOCListProps<T>) {
+function GenericsHOCList<T extends UserType | ProductType>({ itemComponent: Component, items, handleClick }: GenericsHOCListProps<T>): React.ReactNode {
     
     return (
         <div className="component-container">
@@ -21,6 +24,7 @@ function GenericsHOCList<T extends UserType | ProductType>({ component: Componen
                     <div key={"GenericListHOC" + index}>
                         <Component
                             item={item}
+                            handleClick={handleClick}
                         />
                     </div>
                 )

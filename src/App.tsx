@@ -35,6 +35,13 @@ import withNumberedList from './components/withNumberedList'
 import ScratchTests from './components/ScratchTests'
 import LargeListItem from './components/LargeListItem'
 
+// Design Components 
+import ControlledModal from './components/ControlledModal'
+import GenericsHOCList from './components/basicTypes/GenericsHOCList'
+
+
+
+
 const tempData = {
   products: [
     {
@@ -119,47 +126,59 @@ const tempData = {
 // style props 
 // useAuth  
 
+
+// Higher order components 
 const NumberedList = withNumberedList(RegularList<UserType>)
 
 function App() {
+
+  // Data 
   const [products, setProducts] = useState(tempData["products"].slice(0, 3));
   const [users, setUsers] = useState(tempData["users"].slice(0, 3))
 
+  // Modal State
+  const [showModal, setShowModal] = useState(false)
+  // const [onRequestClose, setOnRequestClose] = useState(false)
+
   return (
     <>
+      {/* Basic types  */}
       <div className='section'>
         <h2>Basic Types</h2>
         <ComponentWithChildren>
-          <h4>ComponentWithChildren</h4>
 
           <BasicProps
             stringLiteral='Works!'
             optionWithDefault="Option inputed in App" />
+        </ComponentWithChildren>
+
+        <div className="section">
+          <h4>Button Event</h4>
 
           <ButtonEvent
             handleClick={(event, id) => console.log(id, event)}>
             <p>Log Button ID and Event</p>
           </ButtonEvent>
+        </div>
 
-          <ChangeEvent
-            value="Change Event Component"
-            handleChange={(event) => console.log(event.target)}
-          />
+        <ChangeEvent
+          value="Enter text to log change event"
+          handleChange={(event) => console.log(event.target)}
+        />
 
 
-          <SimpleForm></SimpleForm>
+        <SimpleForm></SimpleForm>
 
-          <CssStyleProps
-            styles={
-              {
-                border: "2px dashed teal",
-                padding: "1rem",
-                backgroundColor: "salmon"
-              }
+        <CssStyleProps
+          styles={
+            {
+              border: "2px dashed teal",
+              padding: "1rem",
+              backgroundColor: "salmon"
             }
-          />
+          }
+        />
 
-        </ComponentWithChildren>
 
         <HigherOrderComponent<UserType>
           component={LargeListItem}
@@ -171,6 +190,12 @@ function App() {
           items={users} //pass in users
           // items={products} //pass in products
           handleClick={(item) => console.log(item)}
+        />
+
+        <GenericsHOCList<UserType>
+          itemComponent={LargeListItem}
+          items={users}
+          handleClick={(item)=>console.log(item)}
         />
 
         <TemplateLiteralsAndExclude
@@ -208,6 +233,8 @@ function App() {
 
 
       </div>
+
+      {/* Hooks  */}
       <div className="section">
         <h2>UseHooks</h2>
         <UseHooks></UseHooks>
@@ -216,8 +243,35 @@ function App() {
         />
       </div>
 
+      {/* Layout Components  */}
+      <div className='section'>
+        <h2>Modal</h2>
 
+        <ButtonEvent
+          handleClick={() => setShowModal(!showModal)}
+        >Show Modal</ButtonEvent>
+
+
+        <ControlledModal
+          showModal={showModal}
+          onRequestClose={() => setShowModal(false)}
+        >
+          <h3>Modal Body Text</h3>
+
+        </ControlledModal>
+
+        {/* //button => shoudlShow, onRequestClose 
+        Component takes children,  return modal baground, modal boddy or null
+        
+        
+        
+        */}
+
+      </div>
+
+      {/* Layout Components  */}
       <div className="section">
+
         <h2>SplitScreen</h2>
 
         <SplitScreenContainer>
@@ -251,6 +305,7 @@ function App() {
 
         </SplitScreenContainer>
       </div>
+
       <ScratchTests />
     </>
   )
