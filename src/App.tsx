@@ -2,7 +2,10 @@ import { useState } from 'react'
 import './App.css'
 
 // Data Types 
-import { ProductType, UserType } from './components/types'
+import { FormInputType, ProductType, UserType } from './components/types'
+
+// Utility Functions
+import { LogClickEvent, LogClickEventTargetText } from './components/utilityFunctions/handleClickEvents'
 
 // Basic Types 
 import BasicProps from './components/basicTypes/BasicProps'
@@ -38,6 +41,7 @@ import LargeListItem from './components/LargeListItem'
 // Design Components 
 import ControlledModal from './components/ControlledModal'
 import GenericsHOCList from './components/basicTypes/GenericsHOCList'
+import ControlledForm from './components/ControlledForm'
 
 
 
@@ -132,9 +136,12 @@ const NumberedList = withNumberedList(RegularList<UserType>)
 
 function App() {
 
-  // Data 
+  // Data State
   const [products, setProducts] = useState(tempData["products"].slice(0, 3));
   const [users, setUsers] = useState(tempData["users"].slice(0, 3))
+
+  //User Input State
+  const [formInput, setFormInput] = useState<FormInputType | null>(null);
 
   // Modal State
   const [showModal, setShowModal] = useState(false)
@@ -142,6 +149,93 @@ function App() {
 
   return (
     <>
+
+
+      {/* Hooks  */}
+      <div className="section">
+        <h2>UseHooks</h2>
+        <UseHooks></UseHooks>
+        <UseStateProps
+          user={users[0]}
+        />
+      </div>
+
+      {/* Layout Components  */}
+      <div className='section'>
+        <div className="component-container">
+
+          <ControlledModal
+            showModal={showModal}
+            onRequestClose={() => setShowModal(false)}
+          >
+            <h3>Modal Body Text</h3>
+          </ControlledModal>
+
+          <ButtonEvent
+            handleClick={() => setShowModal(!showModal)}
+          >
+            Show Modal
+          </ButtonEvent>
+
+        </div>
+
+<div className="component-container">
+
+        <ControlledForm
+        handleSubmit={setFormInput}
+        >
+          {formInput && <p>User Input Name: <strong>{formInput.inputName}</strong></p>}
+          {formInput && <p>User Input Number: <strong>{formInput.inputNumber}</strong></p>}
+        </ControlledForm>
+</div>
+
+
+        {/* //button => shoudlShow, onRequestClose 
+        Component takes children,  return modal baground, modal boddy or null
+        
+        
+        
+        */}
+
+      </div>
+
+      {/* Layout Components  */}
+      <div className="section">
+
+        <h2>SplitScreen</h2>
+
+        <SplitScreenContainer>
+
+          <SplitScreenPanel fr={1} >
+
+            <div>
+              <h3>Small Product Regular List</h3>
+              <RegularList<ProductType>
+                items={products}
+                resourceName="products"
+                itemComponent={SmallProductListItem}
+              />
+            </div>
+
+            <div>
+              <h3>Small User Numbered List</h3>
+              <NumberedList
+                items={users}
+                resourceName="users"
+                itemComponent={SmallUserListItem}
+              />
+            </div>
+
+
+          </SplitScreenPanel>
+
+          <SplitScreenPanel fr={5} >
+
+          </SplitScreenPanel>
+
+        </SplitScreenContainer>
+      </div>
+
       {/* Basic types  */}
       <div className='section'>
         <h2>Basic Types</h2>
@@ -195,8 +289,19 @@ function App() {
         <GenericsHOCList<UserType>
           itemComponent={LargeListItem}
           items={users}
-          handleClick={(item)=>console.log(item)}
-        />
+          // handleClick={(event, id)=>LogClickEvent}
+          handleClick={LogClickEvent}
+        >
+          <h3>GenericsHOCList with Users</h3>
+        </GenericsHOCList>
+
+        <GenericsHOCList<ProductType>
+          itemComponent={LargeListItem}
+          items={products}
+          handleClick={LogClickEventTargetText}
+        >
+          <h3>GenericsHOCList with Products</h3>
+        </GenericsHOCList>
 
         <TemplateLiteralsAndExclude
           position="center-bottom"
@@ -232,78 +337,6 @@ function App() {
         </PolymorphicComponents>
 
 
-      </div>
-
-      {/* Hooks  */}
-      <div className="section">
-        <h2>UseHooks</h2>
-        <UseHooks></UseHooks>
-        <UseStateProps
-          user={users[0]}
-        />
-      </div>
-
-      {/* Layout Components  */}
-      <div className='section'>
-        <h2>Modal</h2>
-
-        <ButtonEvent
-          handleClick={() => setShowModal(!showModal)}
-        >Show Modal</ButtonEvent>
-
-
-        <ControlledModal
-          showModal={showModal}
-          onRequestClose={() => setShowModal(false)}
-        >
-          <h3>Modal Body Text</h3>
-
-        </ControlledModal>
-
-        {/* //button => shoudlShow, onRequestClose 
-        Component takes children,  return modal baground, modal boddy or null
-        
-        
-        
-        */}
-
-      </div>
-
-      {/* Layout Components  */}
-      <div className="section">
-
-        <h2>SplitScreen</h2>
-
-        <SplitScreenContainer>
-
-          <SplitScreenPanel fr={1} >
-
-            <div>
-              <h3>Small Product Regular List</h3>
-              <RegularList<ProductType>
-                items={products}
-                resourceName="products"
-                itemComponent={SmallProductListItem}
-              />
-            </div>
-
-            <div>
-              <h3>Small User Numbered List</h3>
-              <NumberedList
-                items={users}
-                resourceName="users"
-                itemComponent={SmallUserListItem}
-              />
-            </div>
-
-
-          </SplitScreenPanel>
-
-          <SplitScreenPanel fr={5} >
-
-          </SplitScreenPanel>
-
-        </SplitScreenContainer>
       </div>
 
       <ScratchTests />

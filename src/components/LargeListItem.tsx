@@ -1,10 +1,10 @@
 import { ProductType, UserType } from "./types"
+import { ClickEventFunctionProps } from "./utilityFunctions/handleClickEvents"
 
 export type LargeListItemProps<T> = {
   item: T
-  handleClick: (item
-    // event: React.MouseEvent<HTMLHeadingElement>,
-  ) => void,
+  id?: string,
+  handleClick?: ClickEventFunctionProps
 }
 
 // ------------  Type Guard ----------------- 
@@ -13,34 +13,45 @@ function isProduct(itemObject: ProductType | UserType): itemObject is ProductTyp
   return "name" in itemObject
 }
 
+const LargeListItem = <T extends ProductType | UserType>({ item, id, handleClick }: LargeListItemProps<T>): React.ReactNode => {
 
-const LargeListItem = <T extends ProductType | UserType>({ item, handleClick }: LargeListItemProps<T>): React.ReactNode => {
+  let header, body
 
-  
-
-  
   if (isProduct(item)) {
-    const { id, name, price, description, rating } = item || {}
-    
-    return (<div>
-        <h5 onClick={(item)=>handleClick(item)}>{name}</h5>
-        <h5>price:${price}, ID:{id}, Stars: {rating} </h5>
-        <p>{description} </p>
-      </div>
 
-    )
+    // Product Item 
+    const { id, name, price, description, rating } = item || {};
+
+    header = name
+    body = <>
+      <h5>price:${price}, ID:{id}, Stars: {rating} </h5>
+      <p>{description} </p>
+    </>
 
   } else {
 
-    const {screen_name, level } = item || {}
-    return (<div>
-        <h5 onClick={(event)=>console.log(event.target.textContent)}>{screen_name}</h5>
-        <p>Level: {level} </p>
-      </div>
+    // User Item 
+    const { screen_name, level, email, member } = item || {};
 
-    )
+    header = screen_name;
+    body = <>
+      <h5>Level Now: {level} </h5>
+      <p>{email}, Membership: {member.toString()}</p>
+    </>
 
   }
+
+  return (
+    <>
+      {handleClick ?
+        <h3 onClick={(event) => handleClick(event, id)}>{header}</h3>
+        :
+        <h3>{header}</h3>
+      }
+
+      {body}
+    </>
+  )
 
 
 }

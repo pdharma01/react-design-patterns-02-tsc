@@ -1,29 +1,35 @@
 import { UserType, ProductType } from "../types"
+import { ClickEventFunctionProps } from "../utilityFunctions/handleClickEvents"
 import { LargeListItemProps } from "../LargeListItem"
 
 type GenericsHOCListProps<T> = {
+    children: React.ReactNode
     itemComponent: React.ComponentType<LargeListItemProps<T>>,
     items: T[]
-    handleClick: (item
-        // event: React.MouseEvent<HTMLHeadingElement>,
-      ) => void
+    handleClick?: ClickEventFunctionProps
 }
 
 
 //Create with children version
 
 
-function GenericsHOCList<T extends UserType | ProductType>({ itemComponent: Component, items, handleClick }: GenericsHOCListProps<T>): React.ReactNode {
+function GenericsHOCList<T extends UserType | ProductType>(
+    { children, 
+        itemComponent: Component, 
+        items, 
+        handleClick 
+    }: GenericsHOCListProps<T>): React.ReactNode {
     
     return (
         <div className="component-container">
-            <h3>Generics with HOC</h3>
-
+            <h3>{children}</h3>
             {items.map((item, index) => {
+                const id = "GenericListHOC-" + index
                 return (
-                    <div key={"GenericListHOC" + index}>
+                    <div key={id}>
                         <Component
                             item={item}
+                            id ={id}
                             handleClick={handleClick}
                         />
                     </div>

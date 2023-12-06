@@ -17,3 +17,8 @@ export type UserType = {
     email: string,
     member: boolean
 }
+
+export type FormInputType = {
+    inputName?: string
+    inputNumber?: number
+}
