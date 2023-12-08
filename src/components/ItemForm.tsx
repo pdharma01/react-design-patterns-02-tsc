@@ -2,14 +2,42 @@ import { useState } from "react"
 import ButtonEvent from "./basicTypes/ButtonEvent"
 import { ProductType, UserType } from "./types"
 
-type StringFieldProps = "screenName" | "name"
-type NumberFieldProps = "level" | "rating"
 
 type itemFormProps<T> = {
     children: React.ReactNode,
     item: T
 }
 
+
+const TextFieldComponent = () => {
+    return 
+}
+
+const NumFieldComponent = () => {
+    return 
+}
+
+// Take item parameter (User or Product), then dynamically create all fields , daynamically create all States
+function createObject(keys: string[], values: any[]): Record<string, any> {
+    const dynamicObject: Record<string, any> = {};
+  
+    keys.forEach((key, index) => {
+      dynamicObject[key] = values[index];
+    });
+  
+    return dynamicObject;
+  }
+  
+  // Example usage
+  const keys = ['key1', 'key2', 'key3']; // Or keys obtained dynamically
+  const values = [42, 'Hello', true]; // Or values obtained dynamically
+  
+  const myDynamicObject = createObject(keys, values);
+  
+  console.log(myDynamicObject);
+
+
+  
 function ItemForm<T> ({
     children,
     item
