@@ -18,11 +18,11 @@ function UseHooks() {
 
 
     useEffect(() => {
-        console.log(fromMessage, "first useEffect run once");
+        // console.log(fromMessage, "first useEffect run once");
     }, []) //GOTCHA!- Dependancy array
 
     useEffect(() => {
-        console.log(fromMessage, "useEffectCount change, but no re-render")
+        // console.log(fromMessage, "useEffectCount change, but no re-render")
         //how to reset useEffect. end life cycle?
     }, [useEffectCount])
 

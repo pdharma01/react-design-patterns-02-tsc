@@ -147,8 +147,9 @@ i {
 
 .component-container {
   background-color: var(--color-0-xtra-light);
-  border: 2px solid var(--color-3-dark);
-  padding: .5rem;
+  border: 2px solid var(--color-2-medium);
+  padding: 1rem;
+  margin: 1rem;
 }
 
 .primary-color-style {

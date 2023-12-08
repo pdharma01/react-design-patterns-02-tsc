@@ -22,7 +22,7 @@ function GenericsHOCList<T extends UserType | ProductType>(
     
     return (
         <div className="component-container">
-            <h3>{children}</h3>
+            {children}
             {items.map((item, index) => {
                 const id = "GenericListHOC-" + index
                 return (

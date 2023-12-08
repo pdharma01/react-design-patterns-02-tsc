@@ -22,3 +22,9 @@ export type FormInputType = {
     inputName?: string
     inputNumber?: number
 }
+
+// Type Guard = returns boolean 
+export function isProduct(
+    itemObject: ProductType | UserType): itemObject is ProductType {
+    return "name" in itemObject
+  }

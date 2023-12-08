@@ -42,6 +42,7 @@ import LargeListItem from './components/LargeListItem'
 import ControlledModal from './components/ControlledModal'
 import GenericsHOCList from './components/basicTypes/GenericsHOCList'
 import ControlledForm from './components/ControlledForm'
+import ItemForm from './components/ItemForm'
 
 
 
@@ -179,23 +180,21 @@ function App() {
 
         </div>
 
-<div className="component-container">
+        <div className="component-container">
+          <ControlledForm
+            handleSubmit={setFormInput}
+          >
+            {formInput && <p>User Input Name: <strong>{formInput.inputName}</strong></p>}
+            {formInput && <p>User Input Number: <strong>{formInput.inputNumber}</strong></p>}
+          </ControlledForm>
+        </div>
 
-        <ControlledForm
-        handleSubmit={setFormInput}
+        <ItemForm<UserType>
+        item={users[0]}
         >
-          {formInput && <p>User Input Name: <strong>{formInput.inputName}</strong></p>}
-          {formInput && <p>User Input Number: <strong>{formInput.inputNumber}</strong></p>}
-        </ControlledForm>
-</div>
+          <h3>Item Form</h3>
+        </ItemForm>
 
-
-        {/* //button => shoudlShow, onRequestClose 
-        Component takes children,  return modal baground, modal boddy or null
-        
-        
-        
-        */}
 
       </div>
 
