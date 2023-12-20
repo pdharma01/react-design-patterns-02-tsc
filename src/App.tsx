@@ -43,6 +43,8 @@ import ControlledModal from './components/ControlledModal'
 import GenericsHOCList from './components/basicTypes/GenericsHOCList'
 import ControlledForm from './components/ControlledForm'
 import ItemForm from './components/ItemForm'
+import DynamicItemForm from './components/DynamicItemForm'
+import DynamicItemFormRefactored1 from './components/DynamicItemFormRefactored1'
 
 
 
@@ -194,6 +196,24 @@ function App() {
         >
           <h3>Item Form</h3>
         </ItemForm>
+
+        <DynamicItemForm
+        item={products[0]}
+        >
+          <h3>Dynamic Item Form</h3>
+        </DynamicItemForm>
+
+        {/* <DynamicItemForm
+        item={users[0]}
+        >
+          <h3>Dynamic Item Form</h3>
+        </DynamicItemForm> */}
+
+        <DynamicItemFormRefactored1
+item={products[0]}
+>
+  <h3>Dynamic Item Form REFACTORED</h3>
+</DynamicItemFormRefactored1>
 
 
       </div>
